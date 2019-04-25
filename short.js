@@ -41,6 +41,8 @@ function shorturl(){
     var longurl = geturl();
     genhash();
     send_request(longurl);
+    document.getElementById('buttons').innerHTML = 'Submited! Please Reload!';
+    document.getElementById('buttons').className = 'button is-success';
 }
 
 var hashh = window.location.hash.substr(1)
