@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WRMS Url Shortener</title>
+        <meta charset="utf-8">
+        <link rel="icon" href="https://cdn0.iconfinder.com/data/icons/entypo/80/link5-512.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+        <script src="short.js"></script>
+    </head>
+    <body>
+        <div class="hero is-fullheight is-danger is-bold">
+            <div class="hero-body">
+                <div class="container has-text-center">
+                    <h1 id="err" class="title">Delete Page!</h1>
+                    <p class="subtitle">DO NOT USE IF YOU DO NOT KNOW WHAT YOU ARE DOING!</p>
+                    <div class="field">
+                        <p class="control">
+                                <input class="input" placeholder="Enter the code without the #" type="text" id="shortinput">
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                                <input class="input" placeholder="Enter the URL" type="text" id="delinput">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-link"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <a id="buttons" class="button is-link" onclick="delurl()">
+                        <span class="icon">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                        <span>Delete URL</span>
+                    </a>
+                    <a id="buttons" class="button is-success" href="index.html">
+                            <span class="icon">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span>Go Back</span>
+                        </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

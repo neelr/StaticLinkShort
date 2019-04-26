@@ -1,7 +1,16 @@
 var endpoint = "https://www.jsonstore.io/4fb5b62b7515d19e4d0e402a57393672f17ab05bd49542945fbbb521c5d4f1c8";
-
 function geturl(){
     var url = document.getElementById("urlinput").value;
+    var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
+    if(!protocol_ok){
+        newurl = "http://"+url;
+        return newurl;
+        }else{
+            return url;
+        }
+}
+function getdelurl(){
+    var url = document.getElementById("delinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
     if(!protocol_ok){
         newurl = "http://"+url;
@@ -56,4 +65,35 @@ if (window.location.hash != "") {
         }
 
     });
+}
+$.getJSON(endpoint, function (data) {
+    datafull = data["result"];
+});
+function delurl() {
+    deleteurl = getdelurl();
+    deletecode = document.getElementById('shortinput').value;
+    try {
+        if (datafull[deletecode] == deleteurl) {
+            $.ajax({
+                'url': endpoint + "/" + deletecode,
+                'type': 'DELETE',
+            })
+            document.getElementById('buttons').innerHTML = 'DELETED!!!';
+            document.getElementById('buttons').className = 'button is-danger';
+            document.getElementById('err').innerHTML = "Delete Page!";
+            $.getJSON(endpoint, function (data) {
+                datafull = data["result"];
+            });
+        } else {
+            document.getElementById('err').innerHTML = "ERROR PLEASE TRY AGAIN!!!";
+            $.getJSON(endpoint, function (data) {
+                datafull = data["result"];
+            });
+        }
+    } catch {
+        document.getElementById('err').innerHTML = "ERROR PLEASE TRY AGAIN!!!"
+        $.getJSON(endpoint, function (data) {
+            datafull = data["result"];
+        });
+    }
 }
